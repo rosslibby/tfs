@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 
-# This application serves as a slack TFS client for the Mozu team
+# This application serves as a slack TFS client
 # Functionality includes:
 #
 # - Work item linking: /tfs [item id] [message]
