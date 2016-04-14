@@ -10,7 +10,7 @@
 - /tfs -git [environment] [full sha] | returns the linked commit
 
 ### Prerequisites
-This integration runs on [PHP 5.5.9](http://php.net/releases/5_5_9.php)
+This integration runs on [PHP 5.5.9](http://php.net/releases/5_5_9.php)  
 I use [Composer](https://getcomposer.org/download/) to manage dependencies
 
 ### Installation
