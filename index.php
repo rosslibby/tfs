@@ -32,7 +32,6 @@ if ($text == '-help') {
     $response = "Supported commands:\n\n";
     $response .= "`/tfs [your #{item id} message]`\n";
     $response .= "`/tfs [item id] [message]`\n";
-    $response .= "`/tfs -git [environment] [full sha]`\n";
     $response .= "`/tfs build [url item id]`\n";
 } else {
 
