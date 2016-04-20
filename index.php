@@ -99,6 +99,7 @@ header('Content-type: application/json');
 # Build our response
 $reply = [
     'response_type' => 'in_channel',
+    'as_user' => true,
     'text' => $response
 ];
 
