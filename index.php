@@ -28,6 +28,14 @@ if($token != $app_key){ #replace this with the token from your slash command con
     echo $msg;
 }
 
+if ($text == '-help') {
+    $response = "Supported commands:\n\n";
+    $response .= "`/tfs [youre #{item id} message]`\n";
+    $response .= "`/tfs [item id] [message]`\n";
+    $response .= "`/tfs -git [environment] [full sha]`\n";
+    $response .= "`/tfs build [url item id]`\n";
+} else {
+
 # explode the commands to decipher text and shit
 $shrapnel = explode(' ', $text);
 
@@ -83,6 +91,7 @@ if (count($shrapnel) > 1) {
     }
 } else {
     $response = "*TFS #<".$tfsDomain."/_workitems#_a=edit&id=".$text."|".$text.">*";
+}
 }
 
 header('Content-type: application/json');
