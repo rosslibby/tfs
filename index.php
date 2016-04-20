@@ -48,7 +48,7 @@ if (count($shrapnel) > 1) {
         }
     } else {
 
-        if (strpos($text, '#') !== false) {
+        if (strpos($text, ' #') !== false) {
             # find the ID in the text
             $isolate = explode('#', $text)[1];
             $getid = explode(" ", $isolate)[0];
