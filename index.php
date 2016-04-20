@@ -30,7 +30,7 @@ if($token != $app_key){ #replace this with the token from your slash command con
 
 if ($text == '-help') {
     $response = "Supported commands:\n\n";
-    $response .= "`/tfs [youre #{item id} message]`\n";
+    $response .= "`/tfs [your #{item id} message]`\n";
     $response .= "`/tfs [item id] [message]`\n";
     $response .= "`/tfs -git [environment] [full sha]`\n";
     $response .= "`/tfs build [url item id]`\n";
@@ -99,7 +99,6 @@ header('Content-type: application/json');
 # Build our response
 $reply = [
     'response_type' => 'in_channel',
-    'as_user' => true,
     'text' => $response
 ];
 
