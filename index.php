@@ -5,6 +5,13 @@ require 'vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 
+use Parse\ParseClient;
+use Parse\ParseObject;
+use Parse\ParseQuery;
+
+ParseClient::initialize($_ENV['PARSE_ID'], '', $_ENV['PARSE_KEY']);
+ParseClient::setServerURL($_ENV['PARSE_URL']);
+
 # This application serves as a slack TFS client
 # Functionality includes:
 #
@@ -20,6 +27,11 @@ $tfsDomain = $_ENV['TFS_DOMAIN'];
 $command = $_POST['command'];
 $text = $_POST['text'];
 $token = $_POST['token'];
+$user_id = $_POST['user_id'];
+$user_name = $_POST['user_name'];
+$channel_name = $_POST['channel_name'];
+$team_id = $_POST['team_id'];
+$team_domain = $_POST['team_domain'];
 
 # Check the token and make sure the request is from our team
 if($token != $app_key){ #replace this with the token from your slash command configuration page
@@ -27,6 +39,17 @@ if($token != $app_key){ #replace this with the token from your slash command con
     die($msg);
     echo $msg;
 }
+
+# Tracking
+$TFSObject = ParseObject::create('TFSObject');
+$TFSObject->set("command", $command);
+$TFSObject->set("text", $text);
+$TFSObject->set("user_id", $user_id);
+$TFSObject->set("user_name", $user_name);
+$TFSObject->set("channel_name", $channel_name);
+$TFSObject->set("team_id", $team_id);
+$TFSObject->set("team_domain", $team_domain);
+$TFSObject->save();
 
 if ($text == '-help') {
     $response = "Supported commands:\n\n";
