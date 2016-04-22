@@ -40,17 +40,6 @@ if($token != $app_key){ #replace this with the token from your slash command con
     echo $msg;
 }
 
-# Tracking
-$TFSObject = ParseObject::create('TFSObject');
-$TFSObject->set("command", $command);
-$TFSObject->set("text", $text);
-$TFSObject->set("user_id", $user_id);
-$TFSObject->set("user_name", $user_name);
-$TFSObject->set("channel_name", $channel_name);
-$TFSObject->set("team_id", $team_id);
-$TFSObject->set("team_domain", $team_domain);
-$TFSObject->save();
-
 if ($text == '-help') {
     $response = "Supported commands:\n\n";
     $response .= "`/tfs [your #{item id} message]`\n";
@@ -126,3 +115,14 @@ $reply = [
 
 # Send the reply back to the user.
 echo json_encode($reply);
+
+# Tracking
+$TFSObject = ParseObject::create('TFSObject');
+$TFSObject->set("command", $command);
+$TFSObject->set("text", $text);
+$TFSObject->set("user_id", $user_id);
+$TFSObject->set("user_name", $user_name);
+$TFSObject->set("channel_name", $channel_name);
+$TFSObject->set("team_id", $team_id);
+$TFSObject->set("team_domain", $team_domain);
+$TFSObject->save();
